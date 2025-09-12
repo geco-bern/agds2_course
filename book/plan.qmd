@@ -1,49 +1,54 @@
 # Course plan {#sec-plan}
 
-For fall semester 2023.
+**For fall semester 2025.**
 
 ## Block 1: Introduction to Applied Geodata Science methods {.unnumbered}
 
-This first block serves to recap essential machine learning methods that will be applied in the tutorials of subsequent blocks, and to recap methods for implementing a reproducible data science workflow - required for the submission of the self-guided project report.
+This first block serves to recap essential machine learning methods that will be applied in the tutorials of subsequent blocks, and to recap methods for implementing a reproducible and reusable  data science workflow -- required for the submission of the self-guided Report Exercises.
 
-Contents are covered in the [Applied Geodata Science book](https://geco-bern.github.io/agds/).
+### Session 1 - 16.09. {.unnumbered}
 
-### Session 1 - 21.09. {.unnumbered}
+**Note: No presence of lecturers.** Self-study the following chapters in [Applied Geodata Science book](https://geco-bern.github.io/agds_book/):
 
-- [Introduction to Applied Geodata Science](https://geco-bern.github.io/agds/introduction.html#what-is-applied-geodata-science)
-- [The data science workflow and data science basics](https://geco-bern.github.io/agds/introduction.html#the-data-science-workflow)
-- [The concept of modelling](https://geco-bern.github.io/agds/introduction.html#a-new-modelling-paradigm)
+- [Primers](https://geco-bern.github.io/agds_book/primers.html): Introduces basics of the R programming language and provides instructions for setting up the working environment with RStudio, including the installation of libraries used in this book.
+- [Reusable workflows](https://geco-bern.github.io/agds_book/reproducible_workflows.html): Motivates the adoption of reusable, project-oriented workflows and provides a guide for implementing them.
+- [Code Management](https://geco-bern.github.io/agds_book/code_management.html): Introduces the essentials of code version control using Git.
+
+### Session 2 - 23.09. {.unnumbered}
+
+Welcome and presence of lecturers (as in all subsequent sessions). Self-study the following chapters in [Applied Geodata Science book](https://geco-bern.github.io/agds_book/):
+
+- [Introduction to Applied Geodata Science](https://geco-bern.github.io/agds_book/intro.html)
 - Applications of machine learning in Geography and Earth system sciences (lecture)
 
-### Session 2 - 28.09. {.unnumbered}
+### Session 3 - 30.09. {.unnumbered}
 
-- [RMarkdown](https://geco-bern.github.io/agds/gettingstarted.html#rmarkdown)
-- [Workspace management and reproducible workflows](https://geco-bern.github.io/agds/gettingstarted.html#wspmgmt)
-- [Regression and classification](https://geco-bern.github.io/agds/regressionclassification.html)
+Self-study the following chapters in [Applied Geodata Science book](https://geco-bern.github.io/agds_book/) (lecturers present):
 
-### Session 3 - 05.10. {.unnumbered}
+- [Supervised machine learning I](https://geco-bern.github.io/agds_book/supervised_ml_I.html)
+- [Supervised machine learning II](https://geco-bern.github.io/agds_book/supervised_ml_II.html)
 
-- Supervised machine learning (AGDS book [Chapter 9](https://geco-bern.github.io/agds/supervisedmli.html) and [10](https://geco-bern.github.io/agds/supervisedmlii.html))
+### Session 4 - 07.10. {.unnumbered}
 
-### Session 4 - 12.10. {.unnumbered}
+Self-study the following chapters in [Applied Geodata Science book](https://geco-bern.github.io/agds_book/) (lecturers present):
 
-- [Random Forest](https://geco-bern.github.io/agds/randomforest.html)
-- [Interpretable machine learning](https://geco-bern.github.io/agds/interpretableml.html)
+- [Random Forest](https://geco-bern.github.io/agds_book/randomforest.html)
+- [Interpretable machine learning](https://geco-bern.github.io/agds_book/interpretable-ml.html)
 
 ## Block 2: Phenology modelling {.unnumbered}
 
-*Lead: Koen Hufkens*
+*Lead: Fabian Bernhard*
 
 [Link to tutorial](https://geco-bern.github.io/handfull_of_pixels/phenology_modelling.html)
 
 In both Block 2 and 4 I will focus on a set of examples which are rather limited in spatial scope, using just a handfull of pixels. In contrast to what the cloud computing revolution promised, many ideas start out from site or localized studies. The focus of these few chapters from the [Handful of Pixels](https://geco-bern.github.io/handfull_of_pixels/phenology_modelling.html) book is deliberate. I will show you through both examples in vegetation seasonality (phenology) and land-use and land-cover mapping (Block 4) that you can experiment with geo-spatial data on limited compute infrastructure. Furthermore, it also shows you that true science can be done with relatively modest means. You will learn to do big science with small data.
 
-### Session 5 - 19.10. {.unnumbered}
+### Session 5 - 14.10. {.unnumbered}
 
 - Introduction to phenology modelling
 - Self-study of tutorial and exercises
 
-### Session 6 - 26.10. {.unnumbered}
+### Session 6 - 21.10. {.unnumbered}
 
 - Self-study of tutorial and exercises
 
@@ -55,29 +60,29 @@ In both Block 2 and 4 I will focus on a set of examples which are rather limited
 
 Creating soil maps by hand can be tedious and time-consuming and yet they are urgently needed to inform decision-making to prevent soil degradation and to ensure the continuation of important soil-related ecosystem services. This block introduces a workflow for digital soil mapping for using Random Forest models, predicting soil properties across a study area near Bern. The tutorial demonstrates how advances in data availability (continuous maps of climate, terrain, etc.) can be used to predict soil properties that are laborious to obtain from a limited set of soil cores (e.g., pH, water logging, etc.) and for which mapping commonly relied on spatial upscaling "by hand". The self-guided continuation of the tutorial includes conducting variable selection, model formulation, training, evaluation, and interpretation.
 
-### Session 7 - 02.11. {.unnumbered}
+### Session 7 - 28.10. {.unnumbered}
 
 - Introduction to digital soil mapping
 - Self-study of tutorial and exercises
 
-### Session 8 - 09.11. {.unnumbered}
+### Session 8 - 04.11. {.unnumbered}
 
 - Self-study of tutorial and exercises
 
 ## Block 4: Land cover classification {.unnumbered}
 
-*Lead: Koen Hufkens*
+*Lead: Fabian Bernhard*
 
 [Link to tutorial](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html)
 
 In this block, I introduce [Land-Use and Land-Cover mapping](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html). It shows how to train a Land-Use and Land-Cover machine learning algorithm and scale these results to a larger region. The exercises include an amicable competitive component, where a better model needs to be created and results are submitted to a leaderboard (see @sec-leaderboard for details).
 
-### Session 9 - 16.11. {.unnumbered}
+### Session 9 - 11.11. {.unnumbered}
 
 - Introduction to land cover classification
 - Self-study of tutorial and exercises
 
-### Session 10 - 23.11. {.unnumbered}
+### Session 10 - 18.11. {.unnumbered}
 
 - Self-study of tutorial and exercises
 
@@ -93,26 +98,25 @@ With digital soil mapping introduced in Block 3, here we probe its fundamental m
 
 This block serves to critically reflect on working with big data and using (black box) models. It does not introduce entirely new methods, but serves to apply methods learned in previous blocks and in AGDS I for exploring and understanding the benefits and limits of (geo) data science methods. Rather than a tutorial, it comes in the form of literature study and working with the data yourself. All students are required to hand in the Report Exercise of this block.
 
-### Session 11 - 30.11. {.unnumbered}
+### Session 11 - 25.11. {.unnumbered}
 
 - Introduction to model generalisability and spatial upscaling
 - Self-study of literature and report exercise
 
-### Session 12 - 07.12. {.unnumbered}
+### Session 12 - 02.12. {.unnumbered}
 
-- Paper discussion of Ludwig et al. (2023)
+- Paper discussion of Ludwig et al. [-@ludwig23geb]
 - Self-study of literature and report exercise
 
-## Work on Report Exercises {.unnumbered}
+## Block 6: TBA {.unnumbered}
 
-### Session 13 - 14.12. {.unnumbered}
+### Session 13 - 09.12. {.unnumbered}
 
-- Free work on Report Exercises
+- TBA
 
-### Session 14 - 21.12. {.unnumbered}
+### Session 14 - 16.12. {.unnumbered}
 
-- Free work on Report Exercises
-- Wrap-up
+- TBA
 
 
 <!-- ```{r} -->
