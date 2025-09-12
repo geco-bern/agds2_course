@@ -75,7 +75,7 @@ Creating soil maps by hand can be tedious and time-consuming and yet they are ur
 
 [Link to tutorial](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html)
 
-In this block, I introduce [Land-Use and Land-Cover mapping](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html). It shows how to train a Land-Use and Land-Cover machine learning algorithm and scale these results to a larger region. The exercises include an amicable competitive component, where a better model needs to be created and results are submitted to a leaderboard (see @sec-leaderboard for details).
+In this block, I introduce [Land-Use and Land-Cover mapping](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html). It shows how to train a Land-Use and Land-Cover machine learning algorithm and scale these results to a larger region. The exercises include an amicable competitive component, where a better model needs to be created and results are submitted to a leaderboard.
 
 ### Session 9 - 11.11. {.unnumbered}
 
