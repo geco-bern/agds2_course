@@ -6,7 +6,7 @@ title-block-banner: true
 
 ## Course description 
 
-This course consolidates essential methods of the data science workflow, introduced in the course Applied Geodata Science I and the book [Applied Geodata Science](https://geco-bern.github.io/agds/) and demonstrates common applications of machine learning methods in Geography and Environmental Sciences by worked examples.
+This course consolidates essential methods of the data science workflow, introduced in the course Applied Geodata Science I and the book [Applied Geodata Science](https://geco-bern.github.io/agds_book/) and demonstrates common applications of machine learning methods in Geography and Environmental Sciences by worked examples.
 
 ## Learning objectives
 
@@ -19,7 +19,7 @@ This course consolidates essential methods of the data science workflow, introdu
 
 Master students in *Geography* and in *Climate Sciences* at the University of Bern. 
 
-Students are expected to master contents taught in *480094 Applied Geodata Science I*. If AGDS I has not been attended, it is expected that equivalent knowledge has been gained from comparable courses in other study programs, or that contents of the [*Applied Geodata Science book*](https://geco-bern.github.io/agds/) are independently studied before October 14, 2025 (before Session 5 in the fall semester 2025).
+Students are expected to master contents taught in *480094 Applied Geodata Science I*. If AGDS I has not been attended, it is expected that equivalent knowledge has been gained from comparable courses in other study programs, or that contents of the [*Applied Geodata Science book*](https://geco-bern.github.io/agds_book/) are independently studied before October 14, 2025 (before Session 5 in the fall semester 2025).
 
 -------
 
