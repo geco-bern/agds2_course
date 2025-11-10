@@ -176,11 +176,44 @@
     ]
   },
   {
+    "objectID": "leaderboard_fall_2025.html",
+    "href": "leaderboard_fall_2025.html",
+    "title": "3  Leaderboard",
+    "section": "",
+    "text": "3.1 Fall 2025\nThis is the leaderboard for the fall of 2025 Land-Use and Land-Cover competition (complementing the Land-Use and Land-Cover mapping chapter). Submissions are required, but the competition is amicable as rankings will only be considered in the general context of grading. Scoring at the level or better than the base model as demonstrated in the course is however required.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Leaderboard</span>"
+    ]
+  },
+  {
+    "objectID": "leaderboard_fall_2025.html#fall-2025",
+    "href": "leaderboard_fall_2025.html#fall-2025",
+    "title": "3  Leaderboard",
+    "section": "",
+    "text": "3.1.1 Available data\nTraining data is generated through a random subset of 200 pixels for each class in the Fritz et al. (2017) land-use and land-cover validation dataset (following the chapter’s example but with additional data products provided). The equivalent test data for this competition consists of 600 unlabelled locations providing the same spectral information as provided in the training data. Data for the competition can be downloaded from a dedicated zenodo archive.\n\n\n3.1.2 Leaderboard submission\nYour model should be able to run on the test dataset, which puts constraints on which additional data you could download. Submit your model results run on the test dataset as a CSV file containing a table of model results (one label on each row, and a header called lulc_class).\n\n\n\n\n\nlulc_class\n\n\n\n\n1\n\n\n3\n\n\n5\n\n\n...\n\n\n\n\n\nLeaderboard submissions will be accepted two (2) times during the semester, with a final submission included with your overall report. The CSV file submitted via pull request to this repo should be named xyz_results.csv (with xyz replaced by your github handle), and put in the data/leaderboard/fall_2025/ folder. Submissions via email will not be considered.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Leaderboard</span>"
+    ]
+  },
+  {
+    "objectID": "leaderboard_fall_2025.html#leaderboard",
+    "href": "leaderboard_fall_2025.html#leaderboard",
+    "title": "3  Leaderboard",
+    "section": "3.2 Leaderboard",
+    "text": "3.2 Leaderboard\n\n\n\nThe leaderboard ranked according to highest accuracy score. A random dataset is included as a reference, as well as the default model as demonstrated in the Handful of Pixels LULC chapter.\n\n\nUser\nAccuracy\nKappa\n\n\n\n\nlulc-chapter\n0.4217\n0.3574\n\n\nrandom\n0.1033\n0.0033\n\n\n\nNote: \n\n\n\n\n This table was automatically generated! Updates after submission can take over 10 minutes.\n\n\n\n\n\n\n\n\n\n\n\n\nFritz, Steffen, Linda See, Christoph Perger, Ian McCallum, Christian Schill, Dmitry Schepaschenko, Martina Duerauer, et al. 2017. “A Global Dataset of Crowdsourced Land Cover and Land Use Reference Data.” Scientific Data 4 (1): 170075. https://doi.org/10.1038/sdata.2017.75.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Leaderboard</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Ludwig, Marvin, Alvaro Moreno-Martinez, Norbert Hölzel, Edzer Pebesma,\nand Hanna Meyer. 2023. “Assessing and Improving the\nTransferability of Current Global Spatial Prediction Models.”\nGlobal Ecology and Biogeography 32 (3): 356–68. https://doi.org/10.1111/geb.13635.",
+    "text": "Fritz, Steffen, Linda See, Christoph Perger, Ian McCallum, Christian\nSchill, Dmitry Schepaschenko, Martina Duerauer, et al. 2017. “A\nGlobal Dataset of Crowdsourced Land Cover and Land Use Reference\nData.” Scientific Data 4 (1): 170075. https://doi.org/10.1038/sdata.2017.75.\n\n\nLudwig, Marvin, Alvaro Moreno-Martinez, Norbert Hölzel, Edzer Pebesma,\nand Hanna Meyer. 2023. “Assessing and Improving the\nTransferability of Current Global Spatial Prediction Models.”\nGlobal Ecology and Biogeography 32 (3): 356–68. https://doi.org/10.1111/geb.13635.",
     "crumbs": [
       "Home",
       "References"
