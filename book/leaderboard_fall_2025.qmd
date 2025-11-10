@@ -56,10 +56,10 @@ if(!ON_GIT) {
   # )
   # # Use random guess as reference:
   # reference <- random_guess
-  # reference <- read.csv(here::here("../data/leaderboard/fall_2025/random_results.csv"))
+  # reference <- read.csv(here::here("data/leaderboard/fall_2025/random_results.csv"))
   
   # # Use stored results as reference (not part of the repository):
-  reference <- read.csv(here::here("../../handfull_of_pixels_LULC.txt"))
+  reference <- read.csv(here::here("../handfull_of_pixels_LULC.txt"))
 } else {
   
   reference <- Sys.getenv("LULC")
@@ -79,7 +79,7 @@ if(!ON_GIT) {
 
 # list csv file in data/leaderboard/fall_2025
 files <- list.files(
-  here::here("../data/leaderboard/fall_2025"),
+  here::here("data/leaderboard/fall_2025"),
   "*.csv",
   full.names = TRUE
   )
@@ -124,9 +124,7 @@ lb <- do.call("rbind", lb)
 ```
 
 ```{r echo=FALSE, message = FALSE, warning = FALSE, error = FALSE}
-print(getwd())
-print(here::here())
-print(files)
+# print(here::here()) # NOTE: on GitHub runner this resulted in "/home/runner/work/agds2_course/agds2_course"
 
 if(!is.null(lb)) {
   # order rows from high to low
