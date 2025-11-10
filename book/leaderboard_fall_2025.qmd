@@ -61,8 +61,6 @@ if(!ON_GIT) {
   # # Use stored results as reference (not part of the repository):
   reference <- read.csv(here::here("../../handfull_of_pixels_LULC.txt"))
 } else {
-  print(getwd())
-  print(here::here())
   
   reference <- Sys.getenv("LULC")
   
@@ -85,7 +83,6 @@ files <- list.files(
   "*.csv",
   full.names = TRUE
   )
-print(files)
 # loop over all files
 lb <- lapply(files, function(file){
   
@@ -127,6 +124,10 @@ lb <- do.call("rbind", lb)
 ```
 
 ```{r echo=FALSE, message = FALSE, warning = FALSE, error = FALSE}
+print(getwd())
+print(here::here())
+print(files)
+
 if(!is.null(lb)) {
   # order rows from high to low
   lb <- lb |> dplyr::arrange(dplyr::desc(Accuracy))
