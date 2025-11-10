@@ -61,6 +61,9 @@ if(!ON_GIT) {
   # # Use stored results as reference (not part of the repository):
   reference <- read.csv(here::here("../../handfull_of_pixels_LULC.txt"))
 } else {
+  print(getwd())
+  print(here::here())
+  
   reference <- Sys.getenv("LULC")
   
   # convert from dirty string
@@ -82,7 +85,7 @@ files <- list.files(
   "*.csv",
   full.names = TRUE
   )
-
+print(files)
 # loop over all files
 lb <- lapply(files, function(file){
   
