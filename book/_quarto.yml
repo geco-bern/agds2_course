@@ -23,7 +23,6 @@ book:
   repo-url: https://github.com/geco-bern/agds2_course
   sharing: [twitter, facebook]
   navbar:
-    title: " "
     logo: "images/logo.png"
     background: "#3A3A3A"
     search: true
