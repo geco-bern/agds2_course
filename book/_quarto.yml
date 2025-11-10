@@ -15,15 +15,14 @@ book:
     - index.qmd
     - logistics.qmd
     - plan.qmd
+    - leaderboard_fall_2025.qmd
     - references.qmd
-    # - leaderboard_fall_2025.qmd
   favicon: "figures/favicon.ico"
   twitter-card: true
   search: true
   repo-url: https://github.com/geco-bern/agds2_course
   sharing: [twitter, facebook]
   navbar:
-    title: " "
     logo: "images/logo.png"
     background: "#3A3A3A"
     search: true

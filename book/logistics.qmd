@@ -26,7 +26,7 @@ See [Course Plan](@sec-plan) for a complete overview and contextualisation of th
 ## Evaluation
 
 - Students hand in reports of the two Report Exercises in the form of a link, sent to Prof. B. Stocker, to a *git* repository that contains code for two separate, reproducible workflows (RMarkdown, see [here](https://geco-bern.github.io/agds_book/reproducible_workflows.html#sec-vignettes)) for the two Report Exercises (`vignettes/re1.Rmd` and `vignettes/re2.Rmd`).
-- The two evaluated Report Exercises can be chosen among the four possible Report Exercises -- one for each Block.
+- The two evaluated Report Exercises can be chosen among the four possible Report Exercises – one for each Block ([Phenology Modelling](https://geco-bern.github.io/handfull_of_pixels/exercises.html#phenology-modelling), [Digital Soil Mapping](https://geco-bern.github.io/tutorial_digital_soil_mapping/99-exercise.html), [Land cover classification](https://geco-bern.github.io/handfull_of_pixels/exercises.html#land-use-and-land-cover-modelling), or [Spatial upscaling](https://geco-bern.github.io/spatial_upscaling/exercise.html)).
 - Each of the two reports will be equally weighted for the final grade.
 - For grading, we consider the following criteria:
   - **Reproducibility** (20%). Make sure your RMarkdown code is reproducible and generates a html document as intended. You can check this by letting a colleague clone your git repository and run your code on their machine. If it fails, it's not reproducible, and you won't get points for this aspect.
