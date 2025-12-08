@@ -1,4 +1,4 @@
-# Leaderboard {#sec-leaderboard}
+# Leaderboard fLUE {#sec-leaderboard}
 
 ## Fall 2025
 
