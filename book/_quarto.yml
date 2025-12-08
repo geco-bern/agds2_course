@@ -1,9 +1,10 @@
 project:
   type: book
   output-dir: _book
-
+  
 execute:
   freeze: auto
+  dir: book/../
 
 book:
   title: "Applied Geodata Science 2"
@@ -16,6 +17,7 @@ book:
     - logistics.qmd
     - plan.qmd
     - leaderboard_fall_2025.qmd
+    - leaderboard_fLUE_fall_2025.qmd
     - references.qmd
   favicon: "figures/favicon.ico"
   twitter-card: true

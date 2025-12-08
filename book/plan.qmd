@@ -108,15 +108,27 @@ This block serves to critically reflect on working with big data and using (blac
 - Paper discussion of Ludwig et al. [-@ludwig23geb]
 - Self-study of literature and report exercise
 
-## Block 6: TBA {.unnumbered}
+## Block 6: Drought prediction {.unnumbered}
+
+*Lead: Benjamin Stocker*
+
+[Link to tutorial](https://geco-bern.github.io/drought_predictors_competition/exercises.html)
+
+This block introduces an example of using ML algorithms for [drought prediction](https://geco-bern.github.io/drought_predictors_competition/exercises.html).
+We provide an example data set from ongoing research, where the goal is to fit 
+recorded vegetation stress expressed as the fractional Light Use Efficiency (fLUE), 
+observed at eddy covariance sites from the Fluxnet network.
+This exercise includes again an amicable competitive component, where you submit 
+your prediction results on the test data set to a common [leaderboard](https://geco-bern.github.io/agds2_course/leaderboard_fLUE_fall_2025.html).
+
 
 ### Session 13 - 09.12. {.unnumbered}
 
-- TBA
+- Self-study of literature and report exercises
 
 ### Session 14 - 16.12. {.unnumbered}
 
-- TBA
+- Self-study of literature and report exercises
 
 
 <!-- ```{r} -->
