@@ -1,9 +1,10 @@
 project:
   type: book
   output-dir: _book
-
+  
 execute:
   freeze: auto
+  dir: book/../
 
 book:
   title: "Applied Geodata Science 2"
