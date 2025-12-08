@@ -124,7 +124,7 @@ if(!ON_GIT) {
   # use pw to de-zip the encripted zip file
   pw <- Sys.getenv("fLUE")
   ref_df <- read.csv(
-    archive_read(here("data/leaderboard/fLUE_fall_2025/reference_results_fLUE.csv.zip"), 
+    archive_read(here::here("data/leaderboard/fLUE_fall_2025/reference_results_fLUE.csv.zip"), 
                  "reference_results_fLUE.csv", 
                  password = pw)
     ) |> tibble()
