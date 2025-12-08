@@ -42,13 +42,68 @@ kbl(demo) |>
 Leaderboard submissions will be accepted two (2) times during the semester, with a final submission included with your overall report. The CSV file submitted **via pull request** to [this repo](https://github.com/geco-bern/agds2_course) should be named `xyz_results.csv` (with xyz replaced by your github username), and put in the `data/leaderboard/fLUE_fall_2025/` folder. Submissions via email will not be considered.
 
 ## Leaderboard
+```{r}
+#| include: false
+
+#' Analyse modelled values versus observed data.
+#'
+#' Calculates a set of performance statistics and optionally creates plots of modelled
+#' versus observed values.
+#'
+#' @param df A data frame containing columns with names corresponding to arguments
+#' \code{mod} and \code{obs}
+#' @param mod A character string specifying the variable name (column) of the
+#' modelled (simulated) values in data frame \code{df}.
+#' @param obs A character string specifying the variable name (column) of the
+#' observed values in data frame \code{df}.
+#'
+analyse_modobs2_metrics <- function(
+  df,
+  mod,
+  obs,
+  ...) {
+
+  ## rename to 'mod' and 'obs' and remove rows with NA in mod or obs
+  df <- df %>%
+    as_tibble() %>%
+    ungroup() %>%
+    dplyr::select(all_of(c(mod = mod, obs = obs))) %>%
+    tidyr::drop_na(mod, obs)
+
+  ## get linear regression (coefficients)
+  linmod <- lm(obs ~ mod, data = df)
+
+  ## construct metrics table using the 'yardstick' library
+  df_metrics <- df %>%
+    yardstick::metrics(obs, mod) %>%
+    dplyr::bind_rows(tibble(.metric = "n", .estimator = "standard", .estimate = summarise(df, numb = n()) %>% unlist())) %>%
+    dplyr::bind_rows(tibble(.metric = "slope", .estimator = "standard", .estimate = coef(linmod)[2])) %>%
+    # dplyr::bind_rows( tibble( .metric = "nse",      .estimator = "standard", .estimate = hydroGOF::NSE( obs, mod, na.rm=TRUE ) ) ) %>%
+    dplyr::bind_rows(tibble(.metric = "mean_obs", .estimator = "standard", .estimate = summarise(df, mean = mean(obs, na.rm = TRUE)) %>% unlist())) %>%
+    dplyr::bind_rows(tibble(
+      .metric = "prmse", .estimator = "standard",
+      .estimate = dplyr::filter(., .metric == "rmse") %>% dplyr::select(.estimate) %>% unlist() /
+        dplyr::filter(., .metric == "mean_obs") %>%
+        dplyr::select(.estimate) %>%
+        unlist()
+    )) %>%
+    dplyr::bind_rows(tibble(
+      .metric = "pmae", .estimator = "standard",
+      .estimate = dplyr::filter(., .metric == "mae") %>% dplyr::select(.estimate) %>% unlist() /
+        dplyr::filter(., .metric == "mean_obs") %>%
+        dplyr::select(.estimate) %>%
+        unlist()
+    )) %>%
+    dplyr::bind_rows(tibble(.metric = "bias", .estimator = "standard", .estimate = dplyr::summarise(df, mean((mod - obs), na.rm = TRUE)) %>% unlist())) %>%
+    dplyr::bind_rows(tibble(.metric = "pbias", .estimator = "standard", .estimate = dplyr::summarise(df, mean((mod - obs) / obs, na.rm = TRUE)) %>% unlist()))
+
+  return(list(df_metrics = df_metrics))
+}
+```
 
 ```{r echo=TRUE, message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 library(stringr)
 library(dplyr)
-# install.packages("remotes")
-# remotes::install_github("geco-bern/rgeco")
-library(rgeco)
 library(yardstick)
 
 # check if on github
@@ -62,71 +117,77 @@ ON_GIT <- ifelse(
 if(!ON_GIT) {
  
   # # Use stored results as reference (not part of the repository):
-  ref_df <- read.csv("~/Desktop/reference_results_fLUE.csv") |> tibble()
+  ref_df <- read.csv("../drought_predictors_competition_reference_results_fLUE.csv") |> tibble()
 } else {
   
   # # Use encrypted, stored results as reference (part of the repository)
   # use pw to de-zip the encripted zip file
-  pw <- Sys.getenv("fLUE")
-  ref_df <- read.csv(
-    archive_read(here("data/leaderboard/fLUE_fall_2025/reference_results_fLUE.csv.zip"), 
-                 "reference_results_fLUE.csv", 
-                 password = pw)
-    ) |> tibble()
+  # pw <- Sys.getenv("fLUE")
+  # ref_df <- read.csv(
+  #   archive::archive_read(
+  #     archive = here::here("book/images/reference_results_fLUE.csv.zip"), 
+  #     file = "reference_results_fLUE.csv", 
+  #     password = pw)
+  #   ) |> tibble()
 }
 
 # list csv file in data/leaderboard/fall_2025
-files <- list.files(
-  here::here("data/leaderboard/fLUE_fall_2025"),
-  "*.csv$",
-  full.names = TRUE
-  )
-# loop over all files
-lb <- lapply(files, function(file){
-  # set users
-  user <- gsub("_results.csv", "", basename(file))
-    
-  # read in leaderboard submission
-  modelled <- read.csv(file, header = TRUE) |> tibble()
-  
-  # calculate SKILL data.frame()
-  skills <- try(
-    {
-      df_pred_obs <- dplyr::inner_join(
-        ref_df, 
-        modelled,
-        by = join_by(site, date))
-      stopifnot(nrow(df_pred_obs) == 25310)
-      
-      out <- suppressWarnings(
-        rgeco::analyse_modobs2(
-          df_pred_obs |> rename('obs' = 'flue_ref',
-                            'pred' = 'flue_pred'),
-          # mod = "flue_pred",
-          # obs = "flue",
-          mod = "pred",
-          obs = "obs",
-          
-          type = "hex",
-          pal = "magma",
-          shortsubtitle = TRUE
-        )
-      )
-      # out$gg
-      out$df_metrics |> mutate(User = user)
-    }, 
-  )
-  
-  # trap confusion matrix errors (if any)
-  if(inherits(skills, "try-error")){
-    return(NULL)
-  } else {
-    return(skills)
-  }
-})
+# files <- list.files(
+#   here::here("data/leaderboard/fLUE_fall_2025"),
+#   "*.csv$",
+#   full.names = TRUE
+#   )
+# # loop over all files
+# lb <- lapply(files, function(file){
+#   # set users
+#   user <- gsub("_results.csv", "", basename(file))
+#     
+#   # read in leaderboard submission
+#   modelled <- read.csv(file, header = TRUE) |> tibble()
+#   
+#   # calculate SKILL data.frame()
+#   skills <- try(
+#     {
+#       df_pred_obs <- dplyr::inner_join(
+#         ref_df, 
+#         modelled,
+#         by = join_by(site, date))
+#       stopifnot(nrow(df_pred_obs) == 25310)
+#       
+#       out <- analyse_modobs2_metrics(
+#           df_pred_obs,
+#           mod = "flue_pred",
+#           obs = "flue_ref")
+#       out$df_metrics |> mutate(User = user)
+#     }, 
+#   )
+#   
+#   # trap confusion matrix errors (if any)
+#   if(inherits(skills, "try-error")){
+#     return(NULL)
+#   } else {
+#     return(skills)
+#   }
+# })
+# 
+# # bind rows
+# lb <- dplyr::bind_rows(lb)
 
-# bind rows
-lb <- dplyr::bind_rows(lb)
+lb <- tibble(
+  .metric = c("rmse", "rsq", "mae", "n", "slope", 
+              "mean_obs", "prmse", "pmae", "bias", "pbias"), 
+  .estimator = c("standard", "standard", "standard", "standard", "standard", 
+                 "standard", "standard", "standard", "standard", "standard"), 
+  .estimate = c(0.50503445389414, 1.44008964592782e-06, 0.419636044330691, 
+                25310, 
+                mod = -0.000505769671488499, 
+                mean = 0.932421156448505, 
+                .estimate = 0.541637703522048, 
+                .estimate = 0.450049895831452, 
+                `mean((mod - obs), na.rm = TRUE)` = -0.186350663237035, 
+                `mean((mod - obs)/obs, na.rm = TRUE)` = -0.130549161711088), 
+  User = c("random", "random", "random", "random", "random", 
+           "random", "random", "random", "random", "random"))
 ```
 
 ```{r echo=FALSE, message = FALSE, warning = FALSE, error = FALSE}
