@@ -165,11 +165,11 @@
     ]
   },
   {
-    "objectID": "plan.html#block-6-drought-prediction",
-    "href": "plan.html#block-6-drought-prediction",
+    "objectID": "plan.html#block-6-multispectral-water-stress-monitoring",
+    "href": "plan.html#block-6-multispectral-water-stress-monitoring",
     "title": "2  Course plan",
-    "section": "Block 6: Drought prediction",
-    "text": "Block 6: Drought prediction\nLead: Benjamin Stocker\nLink to tutorial\nThis block introduces an example of using ML algorithms for drought prediction. We provide an example data set from ongoing research, where the goal is to fit recorded vegetation stress expressed as the fractional Light Use Efficiency (fLUE), observed at eddy covariance sites from the Fluxnet network. This exercise includes again an amicable competitive component, where you submit your prediction results on the test data set to a common leaderboard.\n\nSession 13 - 09.12.\n\nSelf-study of literature and report exercises\n\n\n\nSession 14 - 16.12.\n\nSelf-study of literature and report exercises\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLudwig, Marvin, Alvaro Moreno-Martinez, Norbert Hölzel, Edzer Pebesma, and Hanna Meyer. 2023. “Assessing and Improving the Transferability of Current Global Spatial Prediction Models.” Global Ecology and Biogeography 32 (3): 356–68. https://doi.org/10.1111/geb.13635.",
+    "section": "Block 6: Multispectral water stress monitoring",
+    "text": "Block 6: Multispectral water stress monitoring\nLead: Benjamin Stocker\nLink to tutorial\nThis block introduces an example of using ML algorithms for multispectral water stress monitoring. We provide an example data set from ongoing research, where the goal is to fit recorded vegetation stress expressed as the fractional Light Use Efficiency (fLUE), observed at eddy covariance sites from the Fluxnet network. This exercise includes again an amicable competitive component, where you submit your prediction results on the test data set to a common leaderboard.\n\nSession 13 - 09.12.\n\nIntroduction to multispectral water stress monitoring\nSelf-study of literature and report exercises\n\n\n\nSession 14 - 16.12.\n\nSelf-study of literature and report exercises\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLudwig, Marvin, Alvaro Moreno-Martinez, Norbert Hölzel, Edzer Pebesma, and Hanna Meyer. 2023. “Assessing and Improving the Transferability of Current Global Spatial Prediction Models.” Global Ecology and Biogeography 32 (3): 356–68. https://doi.org/10.1111/geb.13635.",
     "crumbs": [
       "Home",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Course plan</span>"
