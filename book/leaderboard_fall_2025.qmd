@@ -44,9 +44,9 @@ ON_GIT <- ifelse(
 if(!ON_GIT) {
  
   # generate local random reference set
-  random_guess <- data.frame(
-    lulc_class = sample(1:10, 100, replace = TRUE)
-  )
+  # random_guess <- data.frame(
+  #   lulc_class = sample(1:10, 100, replace = TRUE)
+  # )
   # write.table(
   #   random_guess,
   #   here::here("data/leaderboard/fall_2025/random_results.csv"),
@@ -55,11 +55,10 @@ if(!ON_GIT) {
   #   quote = FALSE
   # )
   # # Use random guess as reference:
-  # reference <- random_guess
-  # reference <- read.csv(here::here("data/leaderboard/fall_2025/random_results.csv"))
+  reference <- read.csv(here::here("data/leaderboard/fall_2025/random_results.csv"))
   
   # # Use stored results as reference (not part of the repository):
-  reference <- read.csv(here::here("../handfull_of_pixels_LULC.txt"))
+  # # reference <- read.csv(here::here("../handfull_of_pixels_LULC.txt"))
 } else {
   
   reference <- Sys.getenv("LULC")
