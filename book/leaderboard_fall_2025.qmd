@@ -58,7 +58,7 @@ if(!ON_GIT) {
   reference <- read.csv(here::here("data/leaderboard/fall_2025/random_results.csv"))
   
   # # Use stored results as reference (not part of the repository):
-  # # reference <- read.csv(here::here("../handfull_of_pixels_LULC.txt"))
+  reference <- read.csv(here::here("../handfull_of_pixels_LULC.txt"))
 } else {
   
   reference <- Sys.getenv("LULC")
@@ -142,7 +142,7 @@ if(!is.null(lb)) {
     footnote(
       ifelse(ON_GIT,
              "This table was automatically generated! Updates after submission can take over 10 minutes.",
-             "This is a dummy local render for debugging purposes."
+             "This table was manually generated!"
              )
     )
 }
