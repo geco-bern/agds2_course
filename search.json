@@ -235,7 +235,7 @@
     "href": "leaderboard_fLUE_fall_2025.html#leaderboard",
     "title": "4  Leaderboard fLUE",
     "section": "4.2 Leaderboard",
-    "text": "4.2 Leaderboard\n\n\n\nThe leaderboard ranked according to highest r-squared score. A random dataset is included as a reference.\n\n\nUser\nrsq\nrmse\nslope\n\n\n\n\nrandom\n0\n0.505\n-0.001\n\n\n\nNote: \n\n\n\n\n\n This table was automatically generated! Updates after submission require manual upgrade.",
+    "text": "4.2 Leaderboard\n\n\n\nThe leaderboard ranked according to highest r-squared score. A random dataset is included as a reference.\n\n\nUser\nrsq\nrmse\nslope\n\n\n\n\nVanEend\n0.552\n0.167\n1.455\n\n\nrandom\n0.000\n0.511\n0.000\n\n\n\nNote: \n\n\n\n\n\n This table was manually generated! Updates after submission require manual upgrade.",
     "crumbs": [
       "Home",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Leaderboard fLUE</span>"
