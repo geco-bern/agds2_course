@@ -118,6 +118,7 @@ if(!ON_GIT) {
  
   # # Use stored results as reference (not part of the repository):
   ref_df <- read.csv("../drought_predictors_competition_reference_results_fLUE.csv") |> tibble()
+  
 } else {
   
   # # Use encrypted, stored results as reference (part of the repository)
@@ -132,62 +133,54 @@ if(!ON_GIT) {
 }
 
 # list csv file in data/leaderboard/fall_2025
-# files <- list.files(
-#   here::here("data/leaderboard/fLUE_fall_2025"),
-#   "*.csv$",
-#   full.names = TRUE
-#   )
-# # loop over all files
-# lb <- lapply(files, function(file){
-#   # set users
-#   user <- gsub("_results.csv", "", basename(file))
-#     
-#   # read in leaderboard submission
-#   modelled <- read.csv(file, header = TRUE) |> tibble()
-#   
-#   # calculate SKILL data.frame()
-#   skills <- try(
-#     {
-#       df_pred_obs <- dplyr::inner_join(
-#         ref_df, 
-#         modelled,
-#         by = join_by(site, date))
-#       stopifnot(nrow(df_pred_obs) == 25310)
-#       
-#       out <- analyse_modobs2_metrics(
-#           df_pred_obs,
-#           mod = "flue_pred",
-#           obs = "flue_ref")
-#       out$df_metrics |> mutate(User = user)
-#     }, 
-#   )
-#   
-#   # trap confusion matrix errors (if any)
-#   if(inherits(skills, "try-error")){
-#     return(NULL)
-#   } else {
-#     return(skills)
-#   }
-# })
-# 
-# # bind rows
-# lb <- dplyr::bind_rows(lb)
+files <- list.files(
+  here::here("data/leaderboard/fLUE_fall_2025"),
+  "*.csv$",
+  full.names = TRUE
+  )
+# loop over all files
+lb <- lapply(files, function(file){
+  # set users
+  user <- gsub("_results.csv", "", basename(file))
 
-lb <- tibble(
-  .metric = c("rmse", "rsq", "mae", "n", "slope", 
-              "mean_obs", "prmse", "pmae", "bias", "pbias"), 
-  .estimator = c("standard", "standard", "standard", "standard", "standard", 
-                 "standard", "standard", "standard", "standard", "standard"), 
-  .estimate = c(0.50503445389414, 1.44008964592782e-06, 0.419636044330691, 
-                25310, 
-                mod = -0.000505769671488499, 
-                mean = 0.932421156448505, 
-                .estimate = 0.541637703522048, 
-                .estimate = 0.450049895831452, 
-                `mean((mod - obs), na.rm = TRUE)` = -0.186350663237035, 
-                `mean((mod - obs)/obs, na.rm = TRUE)` = -0.130549161711088), 
-  User = c("random", "random", "random", "random", "random", 
-           "random", "random", "random", "random", "random"))
+  # read in leaderboard submission
+  modelled <- read.csv(file, header = TRUE) |> tibble()
+  
+  # fix modelled values, if site and date are missing by assuming same order
+  if (ncol(modelled)==1){
+    names(modelled) <- "flue_pred"
+    stopifnot(nrow(modelled) == 17777)
+    modelled <- modelled |> 
+      mutate(site = ref_df$site,
+             date = ref_df$date)
+  }
+  
+  # calculate SKILL data.frame()
+  skills <- try(
+    {
+      df_pred_obs <- dplyr::inner_join(
+        ref_df,
+        modelled,
+        by = join_by(site, date))
+
+      out <- analyse_modobs2_metrics(
+          df_pred_obs,
+          mod = "flue_pred",
+          obs = "flue_ref")
+      out$df_metrics |> mutate(User = user)
+    },
+  )
+
+  # trap confusion matrix errors (if any)
+  if(inherits(skills, "try-error")){
+    return(NULL)
+  } else {
+    return(skills)
+  }
+})
+
+# bind rows
+lb <- dplyr::bind_rows(lb)
 ```
 
 ```{r echo=FALSE, message = FALSE, warning = FALSE, error = FALSE}
@@ -219,7 +212,7 @@ if(!is.null(lb)) {
     footnote(
       ifelse(ON_GIT,
              "This table was automatically generated! Updates after submission can take over 10 minutes.",
-             "This table was automatically generated! Updates after submission require manual upgrade."
+             "This table was manually generated! Updates after submission require manual upgrade."
              )
     )
 }

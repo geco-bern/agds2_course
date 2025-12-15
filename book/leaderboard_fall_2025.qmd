@@ -54,8 +54,8 @@ if(!ON_GIT) {
   #   row.names = FALSE, 
   #   quote = FALSE
   # )
-  # # Use random guess as reference:
-  reference <- read.csv(here::here("data/leaderboard/fall_2025/random_results.csv"))
+  # # Use random guess as reference for a mock table:
+  # reference <- read.csv(here::here("data/leaderboard/fall_2025/random_results.csv"))
   
   # # Use stored results as reference (not part of the repository):
   reference <- read.csv(here::here("../handfull_of_pixels_LULC.txt"))
