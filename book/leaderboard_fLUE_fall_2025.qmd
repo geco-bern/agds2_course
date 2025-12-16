@@ -116,6 +116,16 @@ ON_GIT <- ifelse(
 # if not on git generate demo files
 if(!ON_GIT) {
  
+  
+  # Random values for a mock table
+  # ref_df <- tibble(
+  #   site = c("AU-Dry", "AU-Dry", "AU-Dry", "AU-Dry", "AU-Dry", "AU-Dry", "AU-Dry", "AU-Dry", "AU-Dry", "AU-Dry"),
+  #   date = c("2008-08-30", "2008-08-31", "2008-09-01", "2008-09-02",
+  #   "2008-09-03", "2008-09-04", "2008-09-05", "2008-09-06", "2008-09-07",
+  #   "2008-09-08"),
+  #   flue_ref = runif(10, min = 0, max = 1.5)
+  #   ) |> slice(c(1:10, rep(10, 17767)))
+  # 
   # # Use stored results as reference (not part of the repository):
   ref_df <- read.csv("../drought_predictors_competition_reference_results_fLUE.csv") |> tibble()
   
@@ -139,7 +149,7 @@ files <- list.files(
   full.names = TRUE
   )
 # loop over all files
-lb <- lapply(files, function(file){
+lb_list <- lapply(files, function(file){
   # set users
   user <- gsub("_results.csv", "", basename(file))
 
@@ -180,7 +190,7 @@ lb <- lapply(files, function(file){
 })
 
 # bind rows
-lb <- dplyr::bind_rows(lb)
+lb <- dplyr::bind_rows(lb_list)
 ```
 
 ```{r echo=FALSE, message = FALSE, warning = FALSE, error = FALSE}
@@ -188,20 +198,18 @@ lb <- dplyr::bind_rows(lb)
 
 if(!is.null(lb)) {
   # format the skills:
-  lb <- lb |>
+  lb_fmt <- lb |>
     dplyr::select(User, .metric, .estimate) |>
-    tidyr::pivot_wider(names_from = .metric, values_from = .estimate)
-   
-  # order rows from high to low
-  lb <- lb |> 
+    tidyr::pivot_wider(names_from = .metric, values_from = .estimate) |>
+    # order rows from high to low r-squared
     dplyr::arrange(dplyr::desc(rsq)) |>
-    dplyr::select(User, rsq, rmse, slope) |>
+    dplyr::select(User, n, rsq, rmse, slope) |>
     # and round to reasonable number of digits
     dplyr::mutate(dplyr::across(dplyr::where(is.double), \(x) round(x, 3)))
-
+  
   # plot the matrix as a leaderboard table
   kbl(
-    lb,
+    lb_fmt,
     row.names = FALSE,
     caption = "The leaderboard ranked according to highest r-squared score. A random dataset is included as a reference."
   ) |>
